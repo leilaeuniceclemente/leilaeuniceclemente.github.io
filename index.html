@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Leila Clemente — Consumer Insights & Analytics</title>
+<style>
+  :root {
+    --black: #0d0d0d;
+    --white: #ffffff;
+    --grey-100: #f4f4f4;
+    --grey-200: #e8e8e8;
+    --grey-400: #999999;
+    --grey-600: #555555;
+    --grey-800: #222222;
+    --blue: #1a6fff;
+    --blue-dark: #1258d4;
+    --blue-dim: #e8f0ff;
+    --accent: #1a6fff;
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --radius: 10px;
+    --transition: 0.2s ease;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--grey-200);
+    padding: 0 40px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--grey-600);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+
+  .nav-links a:hover { color: var(--blue); }
+
+  /* HERO */
+  .hero {
+    padding: 140px 40px 80px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 20px;
+  }
+
+  .hero-name {
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 400;
+    color: var(--grey-600);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-bio {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--grey-800);
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition);
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: var(--white);
+  }
+  .btn-primary:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--grey-600);
+    border: 1px solid var(--grey-200);
+  }
+  .btn-ghost:hover { border-color: var(--grey-400); color: var(--black); }
+
+  .btn-outline-blue {
+    background: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+  }
+  .btn-outline-blue:hover { background: var(--blue-dim); }
+
+  /* DIVIDER */
+  .section-divider {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+    border-top: 1px solid var(--grey-200);
+  }
+
+  /* ABOUT SECTION */
+  .about {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 40px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--grey-400);
+    margin-bottom: 32px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .about-stat {
+    padding: 24px;
+    background: var(--grey-100);
+    border-radius: var(--radius);
+    border: 1px solid var(--grey-200);
+  }
+
+  .about-stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .about-stat-label {
+    font-size: 12px;
+    color: var(--grey-600);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* SKILLS CHIPS */
+  .skills-row {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 64px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--grey-100);
+    color: var(--grey-600);
+    border: 1px solid var(--grey-200);
+  }
+
+  .chip.blue {
+    background: var(--blue-dim);
+    color: var(--blue-dark);
+    border-color: #c5d9ff;
+  }
+
+  /* PORTFOLIO SECTION */
+  .portfolio {
+    background: var(--grey-100);
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+    padding: 64px 0;
+  }
+
+  .portfolio-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .portfolio-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* CATEGORY TABS */
+  .category-tabs {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .tab-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--grey-200);
+    background: var(--white);
+    color: var(--grey-600);
+    transition: all var(--transition);
+  }
+
+  .tab-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+  .tab-btn.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: var(--white);
+  }
+
+  /* CASE CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .case-card {
+    background: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: var(--radius);
+    padding: 24px;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .case-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 20px rgba(26,111,255,0.08);
+    transform: translateY(-2px);
+  }
+
+  .case-card.hidden { display: none; }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .card-cat-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--blue-dim);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .card-live-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .card-live-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #16a34a;
+    display: inline-block;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--grey-600);
+    font-style: italic;
+  }
+
+  .card-context {
+    font-size: 13px;
+    color: var(--grey-600);
+    line-height: 1.5;
+    border-left: 2px solid var(--grey-200);
+    padding-left: 10px;
+    margin: 4px 0;
+  }
+
+  .card-result {
+    font-size: 13px;
+    color: var(--grey-800);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .card-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    color: var(--grey-400);
+    background: var(--grey-100);
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--grey-100);
+  }
+
+  .card-link {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+  }
+
+  .card-link:hover { text-decoration: underline; }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--white);
+    border-radius: 14px;
+    max-width: 640px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 36px;
+    transform: translateY(12px);
+    transition: transform 0.2s ease;
+    position: relative;
+  }
+
+  .modal-overlay.open .modal { transform: translateY(0); }
+
+  .modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--grey-200);
+    background: var(--grey-100);
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--grey-600);
+    transition: all var(--transition);
+  }
+
+  .modal-close:hover { background: var(--grey-200); }
+
+  .modal-cat {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+
+  .modal-subtitle {
+    font-size: 13px;
+    color: var(--grey-400);
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+
+  .modal-section {
+    margin-bottom: 20px;
+  }
+
+  .modal-section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--grey-400);
+    margin-bottom: 8px;
+  }
+
+  .modal-section p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--grey-800);
+  }
+
+  .modal-section ul {
+    padding-left: 16px;
+  }
+
+  .modal-section ul li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--grey-800);
+    margin-bottom: 4px;
+  }
+
+  .modal-result-box {
+    background: var(--blue-dim);
+    border: 1px solid #c5d9ff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .modal-result-box p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--grey-800);
+  }
+
+  .modal-result-box strong {
+    color: var(--blue-dark);
+  }
+
+  .modal-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .modal-skill-chip {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--grey-100);
+    color: var(--grey-600);
+    border: 1px solid var(--grey-200);
+  }
+
+  .modal-cta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* CONTACT */
+  .contact {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact-text h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+
+  .contact-text p {
+    font-size: 14px;
+    color: var(--grey-600);
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--grey-200);
+    padding: 24px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--grey-400);
+  }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 110px 20px 60px; }
+    .about { padding: 48px 20px; }
+    .about-grid { grid-template-columns: 1fr 1fr; }
+    .skills-row { padding: 0 20px 48px; }
+    .portfolio-inner { padding: 0 20px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .contact { padding: 48px 20px; }
+    footer { padding: 20px; }
+    .modal { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Leila Clemente</a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Consumer Insights · Analytics · Strategy</p>
+  <h1 class="hero-name">Leila Clemente</h1>
+  <p class="hero-bio">
+    Senior consumer insights and analytics professional with five years of end-to-end experience across consumer packaged goods, fintech, and banking. I diagnose business problems across portfolio, media, distribution, and pricing, and turn messy multi-source data into clear gameplans that move business outcomes.
+  </p>
+  <div class="hero-links">
+    <a href="https://www.linkedin.com/in/leila-clemente/" target="_blank" class="btn btn-primary">LinkedIn ↗</a>
+    <a href="#" class="btn btn-ghost" style="cursor:not-allowed; opacity:0.5;" title="Coming soon">Resume (Coming Soon)</a>
+    <a href="https://docs.google.com/presentation/d/1N67LymBRyjNuSrdTZpYu3Juqe4wLfjA_zzuyyOFSnzs/" target="_blank" class="btn btn-ghost">Portfolio Deck ↗</a>
+    <a href="mailto:leilaeuniceclemente@gmail.com" class="btn btn-outline-blue">Get in touch</a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<div class="section-divider"></div>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-inner">
+    <div class="portfolio-header">
+      <p class="section-label" style="margin-bottom:0">Selected work</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="category-tabs">
+      <button class="tab-btn active" onclick="filterCards('all')">All</button>
+      <button class="tab-btn" onclick="filterCards('insights')">Consumer & Market Insights</button>
+      <button class="tab-btn" onclick="filterCards('channel')">Channel & Customer Strategy</button>
+      <button class="tab-btn" onclick="filterCards('marketing')">Growth & Performance Marketing</button>
+      <button class="tab-btn" onclick="filterCards('tools')">Custom Analytics Tools</button>
+      <button class="tab-btn" onclick="filterCards('strategy')">International Strategy</button>
+    </div>
+
+    <!-- CARDS -->
+    <div class="cards-grid" id="cards-grid">
+
+      <!-- 1. Sari-Sari Storeowners -->
+      <div class="case-card" data-cat="insights" onclick="openModal('sari')">
+        <div class="card-top">
+          <span class="card-cat-badge">Consumer Insights</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">End-to-End Consumer Research</div>
+        <div class="card-subtitle">Sari-Sari Storeowners</div>
+        <p class="card-context">Largest sales channel hadn't been researched in 4+ years. Trade programs were running on assumptions.</p>
+        <p class="card-result">+8% incremental growth opportunity identified. Adopted by top wholesalers for in-store execution.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Ethnographic Fieldwork</span>
+          <span class="skill-tag">Jobs To Be Done</span>
+          <span class="skill-tag">Qualitative Research</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/shopper-quali-insights/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 2. Big Pack -->
+      <div class="case-card" data-cat="insights" onclick="openModal('bigpack')">
+        <div class="card-top">
+          <span class="card-cat-badge">Consumer Insights</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Qualitative Research Studies</div>
+        <div class="card-subtitle">Driving Big Pack Growth</div>
+        <p class="card-context">Big-pack share was declining in a sachet-dominated market. First mover on upsizing wins.</p>
+        <p class="card-result">+2% big-pack share within &lt;1 year. Adopted by regional counterparts.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Nielsen Discover</span>
+          <span class="skill-tag">Concept Testing</span>
+          <span class="skill-tag">Behavioral Research</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/upsizing-drivers/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 3. Category Growth -->
+      <div class="case-card" data-cat="insights" onclick="openModal('catgrowth')">
+        <div class="card-top">
+          <span class="card-cat-badge">Consumer Insights</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Multi-Year Category Growth Analysis</div>
+        <div class="card-subtitle">Dish Care — 20-Year Diagnostic</div>
+        <p class="card-context">After years chasing a revenue milestone, leadership had no clear account of what had driven past category growth.</p>
+        <p class="card-result">Penetration growth across 5+ brands within &lt;1 year. Best media transformation in AMEA.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Nielsen Answers</span>
+          <span class="skill-tag">Data Triangulation</span>
+          <span class="skill-tag">Category Strategy</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/category-growth-codification/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 4. Quant Survey -->
+      <div class="case-card" data-cat="insights" onclick="openModal('quant')">
+        <div class="card-top">
+          <span class="card-cat-badge">Consumer Insights</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Post-Launch Innovation Tracking</div>
+        <div class="card-subtitle">Low-Cost Quantitative Survey</div>
+        <p class="card-context">No affordable read on launch success or what to fix within the first two months of a new product launch.</p>
+        <p class="card-result">+2% purchase intent lift. 50% cost savings vs. traditional research with &lt;1 week turnaround.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Survey Design</span>
+          <span class="skill-tag">Purchase Funnel</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/quant-survey-pipeline/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 5. Shopper Mission Clustering -->
+      <div class="case-card" data-cat="channel" onclick="openModal('ranging')">
+        <div class="card-top">
+          <span class="card-cat-badge">Channel Strategy</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Shopper-Led Store Segmentation</div>
+        <div class="card-subtitle">Drug Channel Ranging Framework</div>
+        <p class="card-context">Existing segmentation classified stores by format and size alone — outdated as shopper missions shifted.</p>
+        <p class="card-result">Unlocked +5% incremental growth in total Drug Channel.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">k-means Clustering</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/shopper-mission-clustering/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 6. Distribution -->
+      <div class="case-card" data-cat="channel" onclick="openModal('distrib')">
+        <div class="card-top">
+          <span class="card-cat-badge">Channel Strategy</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Distribution Framework</div>
+        <div class="card-subtitle">Decline Diagnosis & Turnaround</div>
+        <p class="card-context">Inherited a two-year distribution decline that heavier promo spend had failed to reverse.</p>
+        <p class="card-result">Distribution recovery: 8% → 91% within &lt;1 year. Fastest recovery in Asia, Middle East & Africa.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Correlation Analysis</span>
+          <span class="skill-tag">Geospatial Analysis</span>
+          <span class="skill-tag">Python</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/distribution-diagnostic/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 7. Media R&F -->
+      <div class="case-card" data-cat="marketing" onclick="openModal('media')">
+        <div class="card-top">
+          <span class="card-cat-badge">Performance Marketing</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Media Reach & Frequency Model</div>
+        <div class="card-subtitle">Awareness Maximization</div>
+        <p class="card-context">Media was overwhelmingly TV-skewed with declining awareness. No local R&F model existed.</p>
+        <p class="card-result">Awareness growth across 10+ brands, 2 at their highest in 3 years. Best media transformation in AMEA.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Nielsen Arianna</span>
+          <span class="skill-tag">Media Mix Modelling</span>
+          <span class="skill-tag">Nielsen CMV</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/cross-media-reach-planner/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 8. GLife -->
+      <div class="case-card" data-cat="marketing" onclick="openModal('glife')">
+        <div class="card-top">
+          <span class="card-cat-badge">Performance Marketing</span>
+        </div>
+        <div class="card-title">Growth Marketing Campaigns</div>
+        <div class="card-subtitle">GCash GLife</div>
+        <p class="card-context">Lifestyle mini-app where most merchants had no transaction history to build campaigns on.</p>
+        <p class="card-result">3.75× industry benchmark CTR. +285% visits, +70% transactions across 100+ campaigns in 3 months.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Audience Targeting</span>
+          <span class="skill-tag">Creative Testing</span>
+          <span class="skill-tag">Campaign Management</span>
+        </div>
+        <div class="card-footer">
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 9. Citi Creditshield -->
+      <div class="case-card" data-cat="marketing" onclick="openModal('citi')">
+        <div class="card-top">
+          <span class="card-cat-badge">Performance Marketing</span>
+        </div>
+        <div class="card-title">Product Relaunch & Retention</div>
+        <div class="card-subtitle">Citi Creditshield</div>
+        <p class="card-context">A credit-insurance product stalled in approvals for years, dragged by churn and high comms cost.</p>
+        <p class="card-result">Churn cut 15%, comms cost halved, new users +20%, +25% projected sales lift. Contributed to 2021 go-live.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Customer Journey Mapping</span>
+          <span class="skill-tag">Retention</span>
+          <span class="skill-tag">Product Management</span>
+        </div>
+        <div class="card-footer">
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 10. Island Rose -->
+      <div class="case-card" data-cat="marketing" onclick="openModal('island')">
+        <div class="card-top">
+          <span class="card-cat-badge">Performance Marketing</span>
+        </div>
+        <div class="card-title">Paid Social Performance Campaign</div>
+        <div class="card-subtitle">Island Rose</div>
+        <p class="card-context">Live FB campaign for a leading e-commerce flower retailer in a saturated pandemic market. PHP 5,000 budget, 14 days.</p>
+        <p class="card-result">National 1st Runner-Up. 1.69× ROAS, 8 purchases, 54,553 impressions on a PHP 5,000 budget.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Paid Social</span>
+          <span class="skill-tag">Meta Ads</span>
+          <span class="skill-tag">Creative Testing</span>
+        </div>
+        <div class="card-footer">
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 11. Share Deepdive -->
+      <div class="case-card" data-cat="tools" onclick="openModal('share')">
+        <div class="card-top">
+          <span class="card-cat-badge">Analytics Tool</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Share Drivers/Drainers Tool</div>
+        <div class="card-subtitle">Multi-Source Data Stitching</div>
+        <p class="card-context">Share analysis meant stitching four disconnected, mismatched sources by hand every cycle.</p>
+        <p class="card-result">+30 bps share growth identified. Made the share-growth path repeatable every quarter.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Data Integration</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">KNIME</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/share-deepdive/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 12. Digital Consumer Twin -->
+      <div class="case-card" data-cat="tools" onclick="openModal('twin')">
+        <div class="card-top">
+          <span class="card-cat-badge">Analytics Tool</span>
+          <span class="card-live-badge"><span class="card-live-dot"></span>Live tool</span>
+        </div>
+        <div class="card-title">Digital Consumer Twins</div>
+        <div class="card-subtitle">Synthetic Respondents from Real Research</div>
+        <p class="card-context">Past research sits frozen in transcripts. Teams can't ask new questions of old studies without recommissioning fieldwork.</p>
+        <p class="card-result">Reduces turnaround from 4–6 weeks to same-day for in-scope qual questions. Redirects a majority of a contested USD 20k annual research budget toward higher-value quant and primary research.</p>
+        <div class="card-skills">
+          <span class="skill-tag">GenAI</span>
+          <span class="skill-tag">LLM Evaluation</span>
+          <span class="skill-tag">Insight Democratization</span>
+        </div>
+        <div class="card-footer">
+          <a href="https://leilaeuniceclemente.github.io/consumer-personas/" target="_blank" class="card-link" onclick="event.stopPropagation()">Open tool ↗</a>
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+      <!-- 13. Paymob -->
+      <div class="case-card" data-cat="strategy" onclick="openModal('paymob')">
+        <div class="card-top">
+          <span class="card-cat-badge">Business Strategy</span>
+          <span style="font-size:10px; font-weight:700; color:#3B6D11; background:#EAF3DE; padding:3px 8px; border-radius:4px;">🏆 Global Champion</span>
+        </div>
+        <div class="card-title">Fintech Market Expansion</div>
+        <div class="card-subtitle">Paymob Egypt — AUC International Case Competition</div>
+        <p class="card-context">24-hour case: pick Paymob's next growth market and the strategy to win it. Judged by BCG and global fintech panel.</p>
+        <p class="card-result">Global Champion. Bested 100+ teams from 40+ countries including Wharton and NYU. Recommendation validated in-market: Paymob expanded to Pakistan within 1 month.</p>
+        <div class="card-skills">
+          <span class="skill-tag">Market Entry Strategy</span>
+          <span class="skill-tag">Competitive Analysis</span>
+          <span class="skill-tag">Market Sizing</span>
+        </div>
+        <div class="card-footer">
+          <span style="font-size:12px; color:var(--grey-400)">View details →</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-text">
+    <h2>Let's work together</h2>
+    <p>End-to-end consumer insights and analytics, across CPG, fintech, and beyond.</p>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:leilaeuniceclemente@gmail.com" class="btn btn-primary">leilaeuniceclemente@gmail.com</a>
+    <a href="https://www.linkedin.com/in/leila-clemente/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+  </div>
+</section>
+
+<footer>
+  <p>Leila Clemente</p>
+  <p>Consumer Insights & Analytics Portfolio</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+  const cases = {
+    sari: {
+      cat: 'Consumer & Market Insights',
+      title: 'End-to-End Consumer Research',
+      subtitle: 'Sari-Sari Storeowners',
+      context: 'The largest sales channel hadn\'t been researched in 4+ years. Trade programs and concept sells were running on assumptions, not shopper insight.',
+      objective: 'Decode how storeowners source, range, and operate their stores, to reground trade programs and retailer plans in shopper behavior.',
+      scope: '8 storeowners, Metro Manila, Sep–Oct 2025',
+      methodology: [
+        'Research design: In-home interviews, shopalongs, store-walks, and promo concept stimuli',
+        'Sampling: Storeowners multisourcing across 2+ retailers on a monthly basis',
+        'Built owner archetypes from behavioral patterns, then packaged into a concept-sell engine for top retailers',
+        'Primary challenge: Untangling each retailer and distributor\'s role in servicing storeowners — solved by mapping retailer equity'
+      ],
+      result: 'Storeowners were giving most of their capital to a competitor due to a misconception that our partner could only supply in large fixed units when smaller buying was possible. Recommendation: a mixed-assortment box. Adopted by top wholesalers. +8% incremental growth opportunity identified.',
+      skills: ['Qualitative Research', 'Ethnographic Fieldwork', 'Interview Moderation', 'Jobs To Be Done Framework', 'Concept Sell Design', 'Stakeholder Management'],
+      link: 'https://leilaeuniceclemente.github.io/shopper-quali-insights/'
+    },
+    bigpack: {
+      cat: 'Consumer & Market Insights',
+      title: 'Qualitative Research Studies',
+      subtitle: 'Driving Big Pack Growth',
+      context: 'Big-pack share was declining in a sachet-dominated market. First mover on upsizing wins.',
+      objective: 'Find what makes shoppers trade up to bigger packs and create action plans for each category.',
+      scope: 'Syndicated data, store fieldwork, in-home interviews. 20 consumers who can afford big packs; mix of sachet users and recent switchers.',
+      methodology: [
+        'Combined Nielsen analysis, store checks, shopalongs, deprivation tests, and in-home interviews with promo concept stimuli',
+        'Identified 5 upsizing drivers and crafted a per-category action plan linked to each',
+        'Primary challenge: Crafting recommendations when main barriers are long-term — solved by identifying distribution opportunities by category'
+      ],
+      result: 'Consumers defaulted to sachets due to overdosing on big packs and misperception of big pack price-points. Recommendations: controlled-dosage big packs, price ladder fixes, higher promo depth. +2% big-pack share within <1 year. Adopted by regional counterparts.',
+      skills: ['Nielsen Discover', 'Human Behavioral Research', 'Concept Testing', 'Cross-Functional Collaboration', 'Category Playbook Design'],
+      link: 'https://leilaeuniceclemente.github.io/upsizing-drivers/'
+    },
+    catgrowth: {
+      cat: 'Consumer & Market Insights',
+      title: 'Multi-Year Category Growth Analysis',
+      subtitle: 'Dish Care — 20-Year Diagnostic',
+      context: 'After years chasing a revenue milestone, leadership had no clear account of what had actually driven past category growth.',
+      objective: 'Reconstruct what drove two decades of category growth and pinpoint which levers are insufficient today.',
+      scope: '20-year analysis in categories that grew double-digit and where we led growth.',
+      methodology: [
+        'Stitched past 20 years of Nielsen trends and mapped growth drivers across portfolio, pricing, distribution, media quantity/quality, and communications',
+        'Reconstructed main drivers behind category growth, isolated which drivers are insufficient today',
+        'Primary challenge: Separating cause from coincidence across two decades of mixed signals — solved by triangulating drivers against actual growth inflections',
+        'Translated into actions tracked on a monthly basis'
+      ],
+      result: 'Penetration is #1 driver to category growth. New user growth had stalled due to insufficiency in portfolio focus, media sufficiency, and communications vs. competition. Adopted by leadership. Penetration growth across 5+ brands within <1 year. Recognized as best media transformation in AMEA.',
+      skills: ['Nielsen Answers', 'Microsoft Power Pivot', 'Kantar Worldpanel', 'Data Triangulation', 'Category Strategy', 'Cross-Functional Collaboration'],
+      link: 'https://leilaeuniceclemente.github.io/category-growth-codification/'
+    },
+    quant: {
+      cat: 'Consumer & Market Insights',
+      title: 'Post-Launch Innovation Tracking',
+      subtitle: 'Low-Cost Quantitative Survey',
+      context: 'A new innovation had launched with no affordable read on its success or what to fix within the first two months.',
+      objective: 'Measure innovation success of an upgraded product two months post-launch and diagnose gaps in the purchase funnel within <1 week.',
+      scope: 'End-to-end quantitative survey via a low-cost consumer panel, 300 respondents.',
+      methodology: [
+        'Built a low-cost consumer panel and designed and ran the survey end-to-end: questionnaire design, agency briefing, survey analysis',
+        'Diagnosed gaps using the purchase funnel (awareness, consideration, purchase) and gaps of repurchase among trialists',
+        'Analyzed findings within a Power BI dashboard and translated insights into recommendations for the next creative iteration'
+      ],
+      result: 'Consideration was the largest gap. Copy believability was low because the brand was not perceived to deliver the new product\'s benefits. Recommendation: add visual cues of benefit with right local articulation. Adopted in next copy, lifting purchase intent by +2%. 50% cost savings vs. traditional research with <1 week turnaround.',
+      skills: ['Innovation Tracking', 'Quantitative Research', 'Power BI', 'Survey Design', 'Purchase Funnel Analysis', 'Stakeholder Management'],
+      link: 'https://leilaeuniceclemente.github.io/quant-survey-pipeline/'
+    },
+    ranging: {
+      cat: 'Channel & Customer Strategy',
+      title: 'Shopper-Led Store Segmentation',
+      subtitle: 'Drug Channel Ranging Framework',
+      context: 'The existing channel segmentation was classified by format and size alone — becoming outdated as shopper missions shifted within Drug Channel.',
+      objective: 'Redesign segmentation around shopping mission, not just format and size, and create SKU recommendations by segment.',
+      scope: 'Drug/Pharmacy channel leveraging sellout data and neighborhood analytics.',
+      methodology: [
+        'Reframed segmentation around shopper mission, not format or size',
+        'Grounded clustering logic using by-store internal sellout and POS data, validated by neighborhood analytics',
+        'Reclassified stores matching why shoppers are going there and store space',
+        'Created test-and-learn plans of potential SKUs to distribute in top segment'
+      ],
+      result: 'Top doors could have vastly different missions — size-based ranging had been misallocating assortment for 5+ years. Unlocked +5% incremental growth in total Drug Channel.',
+      skills: ['Customer Segmentation', 'Python', 'SQL', 'Machine Learning', 'k-means Clustering', 'Generative AI', 'Cross-Functional Collaboration'],
+      link: 'https://leilaeuniceclemente.github.io/shopper-mission-clustering/'
+    },
+    distrib: {
+      cat: 'Channel & Customer Strategy',
+      title: 'Distribution Framework',
+      subtitle: 'Decline Diagnosis & Turnaround',
+      context: 'Inherited a two-year distribution decline that heavier promo spend had failed to reverse.',
+      objective: 'Find the true drivers of distribution and reallocate investments to these levers.',
+      scope: 'Traditional trade and wholesalers, multi-region, 8 brands.',
+      methodology: [
+        'Full-metric diagnostic, store geomapping, and region-level correlation tests',
+        'Stitched Nielsen distribution data with internal distribution and sellout data by store and region',
+        'Identified top drivers of distribution with corresponding action plans by brand',
+        'Identified covered stores with highest correlation to distribution growth'
+      ],
+      result: 'Promo spend was concentrated in top retailer while neighborhood wholesalers were out of stock on promos before next visit. Reallocated promos to stores with highest correlation to distribution. Distribution recovery: 8% → 91% within <1 year. Recognized as the fastest distribution recovery within Asia, Middle East, and Africa.',
+      skills: ['Correlation Analysis', 'Geospatial Analysis', 'Python', 'SQL', 'Stakeholder Management', 'Cross-Functional Collaboration'],
+      link: 'https://leilaeuniceclemente.github.io/distribution-diagnostic/'
+    },
+    media: {
+      cat: 'Growth & Performance Marketing',
+      title: 'Media Reach & Frequency Model',
+      subtitle: 'Awareness Maximization',
+      context: 'Awareness was slowly declining, with media overwhelmingly TV-skewed. No local reach-and-frequency model existed.',
+      objective: 'Grow awareness by building the first local R&F model that computes the right TV-to-digital balance.',
+      scope: 'National media in TV, Meta, YouTube, TikTok across 10+ brands.',
+      methodology: [
+        'Sources: Nielsen media consumption trends and 3 years of internal media planning data',
+        'Built media mix recommendation based on highest reach periods across brands',
+        'Primary challenge: Securing additional digital media investment — solved by piloting 3 brands prior to scaling'
+      ],
+      result: 'Awareness growth across 10+ brands, with 2 at their highest in past 3 years. Regionally recognized as the best media transformation in Asia, Middle East, and Africa.',
+      skills: ['Nielsen Arianna', 'Media Mix Modelling', 'Nielsen CMV', 'Stakeholder Management', 'Cross-Functional Collaboration'],
+      link: 'https://leilaeuniceclemente.github.io/cross-media-reach-planner/'
+    },
+    glife: {
+      cat: 'Growth & Performance Marketing',
+      title: 'Growth Marketing Campaigns',
+      subtitle: 'GCash GLife',
+      context: 'A lifestyle mini-app platform where most merchants had no transaction history to build campaigns on.',
+      objective: 'Grow GMV and engagement for GLife users and merchants with no baseline, while raising in-app UX standards.',
+      scope: 'Retail & Gaming merchants, 3 months, across app push, paid social, in-app.',
+      methodology: [
+        'Owned the category growth end-to-end: campaign strategy, ad copy, merchant onboarding quality controls, and UX standards',
+        'Insight-led targeting and creative testing engine across app push, paid social, and in-app: 100+ campaigns in 3 months',
+        'Primary challenge: Building performance for new merchants without baseline — solved by higher promo depth and stronger CTAs'
+      ],
+      result: 'Beat industry benchmark by 3.75× (9.5% vs 2.5% CTR) across 100+ campaigns in 3 months. Sustained merchant lift: +285% visits, +70% transactions, +44% ATV, +129% conversion.',
+      skills: ['Audience Targeting', 'Copywriting', 'Creative Testing', 'Campaign Management', 'UX Testing', 'Cross-Functional Collaboration'],
+      link: null
+    },
+    citi: {
+      cat: 'Growth & Performance Marketing',
+      title: 'Product Relaunch & Retention',
+      subtitle: 'Citi Creditshield',
+      context: 'A credit-insurance product that had been inactive and stalled in approvals for years, dragged by high churn and comms cost.',
+      objective: 'Bring a stalled credit-insurance product to launch-ready, and cut the churn and comms cost dragging it down.',
+      scope: 'Customer journey and marketing comms across three sales channels.',
+      methodology: [
+        'Mapped the customer journey, prioritized retention as the pre-relaunch lever',
+        'Rebuilt telesales retention scripts around real cancellation reasons',
+        'Redesigned comms with Legal and Compliance and shortened SMS to cut cost',
+        'Crafted recommendations for new user acquisition via interface improvements and new product line extensions'
+      ],
+      result: 'Contributed to 2021 go-live after years of delay. Cut churn by 15% and halved comms cost via shorter SMS. New users +20%, with +25% projected sales lift.',
+      skills: ['Customer Journey Mapping', 'Customer Retention', 'Product Management', 'UX Testing', 'Cross-Functional Collaboration'],
+      link: null
+    },
+    island: {
+      cat: 'Growth & Performance Marketing',
+      title: 'Paid Social Performance Campaign',
+      subtitle: 'Island Rose',
+      context: 'A live FB campaign for a leading e-commerce flower retailer in a saturated pandemic market. PHP 5,000 budget, 14 days, 3-person team.',
+      objective: 'Design and run a live, converting paid-social campaign on a capped budget. Achieve the strongest full-funnel performance among competing teams.',
+      scope: 'PHP 5,000, 14 days, conversion copy and targeting.',
+      methodology: [
+        'Built insight-led targeting on life and seasonal events tied to gifting',
+        'Ran a 3-phase funnel: awareness → evaluation → purchase',
+        'Tested 7 creative variants live then shifted spend to winners by quality, engagement, and conversion rankings'
+      ],
+      result: 'National 1st Runner-Up on a weighted full-funnel score. 1.69× ROAS and 8 purchases on the PHP 5,000 budget. 54,553 impressions, 23,576 reach.',
+      skills: ['Paid Social Advertising', 'Audience Targeting', 'Creative Testing', 'Presentation Skills', 'Meta Ads'],
+      link: null
+    },
+    share: {
+      cat: 'Custom Analytics Tools',
+      title: 'Share Drivers/Drainers Tool',
+      subtitle: 'Multi-Source Data Stitching Framework',
+      context: 'Share analysis meant stitching four disconnected, mismatched sources by hand every cycle.',
+      objective: 'Turn four disconnected sources into one repeatable store-by-SKU share view of how to grow share.',
+      scope: 'Channel where share lags benchmark.',
+      methodology: [
+        'Sources: Local POS, global report, syndicated panel with competition view, internal distribution data',
+        'Built a tool stitching all sources into one store-by-SKU share growth gameplan',
+        'Made the building blocks to grow share explicit, plotting projected quarterly growth and flagging gaps'
+      ],
+      result: '+30 bps share growth identified. Made the share-growth path repeatable every quarter.',
+      skills: ['Data Integration', 'Market Share Analysis & Projection', 'Python', 'KNIME', 'Generative AI', 'Stakeholder Management', 'Cross-Functional Collaboration'],
+      link: 'https://leilaeuniceclemente.github.io/share-deepdive/'
+    },
+    twin: {
+      cat: 'Custom Analytics Tools',
+      title: 'Digital Consumer Twins',
+      subtitle: 'Synthetic Respondents from Real Research',
+      context: 'Past research sits frozen in transcripts and decks. Teams can\'t ask new questions of old studies without recommissioning fieldwork.',
+      objective: 'Create a capability where Brand/Sales teams can query AI twins built from real interview and shopalong transcripts — including questions never asked in the original study.',
+      scope: 'All interview transcripts across all categories and across three retailers.',
+      methodology: [
+        'Owned tuning, validation, guardrails, and crafting of discussion guide for teams',
+        'Built guardrails to keep twins grounded in actual interview transcripts',
+        'Mapped appropriate temperature settings for each use case: Literal (verbatim recall), Moderate (exploratory probing), Imaginative (brainstorming new stimuli)',
+        'Primary challenge: Ensuring synthetic respondents are faithful to real consumers — solved by grounding all validation in original transcripts and firsthand knowledge of research'
+      ],
+      result: 'Reduces research turnaround from 4–6 weeks to same-day for in-scope qual questions, and redirects a majority of a contested USD 20k annual research budget toward higher-value quantitative and primary research.',
+      skills: ['GenAI', 'LLM Evaluation', 'AI Capability Training', 'Insight Democratization'],
+      link: 'https://leilaeuniceclemente.github.io/consumer-personas/'
+    },
+    paymob: {
+      cat: 'International Strategy & Business Case Solving',
+      title: 'Fintech Market Expansion',
+      subtitle: 'Paymob Egypt — AUC International Case Competition',
+      context: '24-hour case: pick Paymob\'s next growth market and build the strategy to win it. Judged by a BCG and global fintech panel. 100+ teams from 40+ countries including Wharton and NYU.',
+      objective: 'Pick Paymob\'s next growth market and the strategy to win it. Build a defensible growth thesis strong enough to win the global competition.',
+      scope: '24-hour case competition, B2B digital payments fintech company in Egypt.',
+      methodology: [
+        'Built a market-attractiveness framework on technological adoption and cultural readiness',
+        'Narrowed to markets primed for digital but not yet saturated',
+        'Chose Pakistan over Saudi Arabia: Saudi was saturated and overregulated; Pakistan had early-stage competition; Egypt has preferential market access to Pakistan',
+        'Sized SME lending gap in both markets and reframed loan-aversion as bank-aversion, as proven by informal lending (Gam\'iya)'
+      ],
+      result: 'Pakistan\'s structural advantage — nascent but growing fintech market, familiar MSME model, and Egypt\'s trade-treaty access — beat Saudi\'s saturated wealth. Recommendation: position Paymob to Pakistan\'s MSMEs as a digital partner, not a bank, via strategic partnerships and marketing education. Validated in-market: Paymob announced expansion to Pakistan <1 month after the competition. Global Champion.',
+      skills: ['Market Entry Strategy', 'Competitive Analysis', 'Market Sizing', 'Revenue Projection', 'Presentation Skills'],
+      link: null
+    }
+  };
+
+  function openModal(id) {
+    const c = cases[id];
+    if (!c) return;
+    document.getElementById('modal-body').innerHTML = `
+      <p class="modal-cat">${c.cat}</p>
+      <h2 class="modal-title">${c.title}</h2>
+      <p class="modal-subtitle">${c.subtitle}</p>
+
+      <div class="modal-result-box">
+        <p><strong>Result:</strong> ${c.result}</p>
+      </div>
+
+      <div class="modal-section">
+        <p class="modal-section-label">Context</p>
+        <p>${c.context}</p>
+      </div>
+
+      <div class="modal-section">
+        <p class="modal-section-label">Objective</p>
+        <p>${c.objective}</p>
+      </div>
+
+      <div class="modal-section">
+        <p class="modal-section-label">Scope</p>
+        <p>${c.scope}</p>
+      </div>
+
+      <div class="modal-section">
+        <p class="modal-section-label">Methodology</p>
+        <ul>${c.methodology.map(m => `<li>${m}</li>`).join('')}</ul>
+      </div>
+
+      <p class="modal-section-label">Skills used</p>
+      <div class="modal-skills">${c.skills.map(s => `<span class="modal-skill-chip">${s}</span>`).join('')}</div>
+
+      <div class="modal-cta">
+        ${c.link ? `<a href="${c.link}" target="_blank" class="btn btn-primary">Open live tool ↗</a>` : ''}
+        <button class="btn btn-ghost" onclick="closeModalDirect()">Close</button>
+      </div>
+    `;
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+  }
+
+  function closeModalDirect() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+
+  function filterCards(cat) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.case-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+</script>
+</body>
+</html>
